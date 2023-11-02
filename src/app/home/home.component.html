@@ -1,0 +1,56 @@
+<!-- header starts -->
+<app-header></app-header>
+<!-- header ends -->
+
+<!-- container starts -->
+<div class="container container-flex">
+  <main role="main">
+    <article class="article-recent" *ngFor="let blog of blogs">
+      <div class="article-recent-main">
+        <h2 class="article-title">{{ blog.blog_title }}</h2>
+        <p [innerHTML]="blog.formattedContent | shortContent:250" class="artical-body"></p>
+        <a [routerLink]="['/view', blog.blog_id]" class="article-read-more"
+          >CONTINUE READING</a
+        >
+      </div>
+      <div class="article-recent-secondary">
+        <img 
+          [src]="'data:image/png;base64,' + blog.image_url"
+          alt="image not display"
+          class="article-image"
+        />
+        
+        <div class="row article-info mb-0">
+          <img *ngIf="blog.user_image != null" [src]="'data:image/png;base64,' + blog.user_image" alt="" style="border-radius: 50%;" width="25px" height="25px">
+          <img *ngIf="blog.user_image == null" src="assets/defaultimage.png" alt="" style="border-radius: 50%;" width="25px" height="25px">
+          <h6 class="ml-2 mr-2 "><b>{{blog.author_name}}</b> &nbsp;<fa-icon [icon]="faCrown" style="color: gold;"></fa-icon></h6>
+        </div>
+        <p style="margin-top:3%" class="article-info">
+          {{ blog.post_date | date : "mediumDate" }} |
+          {{ blog.commentCount }} comment
+          <span class="float-right w-20">
+          <fa-icon [icon]="faEye"></fa-icon> {{blog.view_count}}
+          </span>
+        </p>
+      </div>
+    </article>
+  </main>
+  <div *ngIf="nodata" class="container">
+    <div class="box">
+      <h2 id="no-data-msg">No Blogs Find</h2>
+    </div>
+  </div>
+</div>
+<div *ngIf="showErrorMsg != ''" class="container">
+  <div class="box-2">
+    <h3 style="width: fit-content;" class="alert alert-danger text-dark text-center">{{showErrorMsg}}</h3>
+    <ul>
+      <li>Reload the page again</li>
+      <li>Check your internet connection</li>
+    </ul>
+  </div>
+</div>
+
+<ngx-spinner type="ball-fussion"></ngx-spinner>
+<!-- container ends -->
+<app-footer></app-footer>

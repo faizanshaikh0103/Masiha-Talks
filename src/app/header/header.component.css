@@ -1,0 +1,72 @@
+
+header{
+    padding: 2em 0;
+    text-align: center;
+    background: #143774;
+    /* background: #f0f8ff; */
+    font-family: sans-serif;
+    margin-bottom: 3em;
+  }
+
+  .container-flex {
+    padding: 0 15px;
+}
+.site-title {
+    text-align: center;
+}
+  nav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  nav li{
+    margin: 0 1em;
+  }
+  nav a{
+    text-decoration: none;
+    color: white;
+    font-weight: 700; 
+    padding: 0.25em 0;
+  }
+  
+  nav a:hover,
+  nav a:focus{
+    color: #615240;
+    border-bottom: 1px solid black;
+    transition: .3s ease;
+  }
+  a{
+    cursor: pointer;
+  }
+  .logo{
+   
+    color: white;
+  }
+  .subtitle{
+    color:white;
+    font-style: italic;
+  }
+
+ 
+
+
+/* .navbar-brand {
+  font-size: 24px; 
+}
+
+.navbar-toggler-icon {
+  background-color: white; 
+}
+
+.nav-link {
+  font-size: 18px;
+} */
+
+/* Media query for smaller screens */
+/* @media (max-width: 768px) {
+  .navbar-toggler-icon { */
+    /* background-color: #143774; Use the primary color for the toggler icon */
+  /* }
+} */
+

@@ -1,0 +1,159 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+            <div class="imagecircle">
+                <img src="assets/image1.jpeg" alt="" width="150px" height="150px" style="border-radius: 50%;">
+            </div>
+            <div class="form-group">
+                <input type="text"  name="user_name" id="user_name" class="form-control fieldset">
+            </div>
+        </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+      <!-- header start  -->
+      <app-header></app-header>
+      <!-- header end -->
+<!-- 
+    <div style="margin-bottom: 10%;" class="container">
+        <div style="background-color: burlywood;" class="card pb-3"> -->
+            <!-- <h3>Profile</h3> -->
+            <!-- <div class="alert alert-success" *ngIf="showAlert">{{showSuccessMsg}}</div>
+            <div class="alert alert-danger" *ngIf="showerralert">{{showerrmsg}}</div>
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="profile-container"> -->
+                    <!-- Circular profile image -->
+                    <!-- <img *ngIf="!showImage" [src]="'data:image/png;base64,' + imageurl" alt="Profile Image" class="profile-image"><br>
+                    <img style="margin-bottom: 20px;" *ngIf="showImage" [src]="imageurl" alt="Profile Image" class="profile-image"><br>
+                    <p *ngIf="sessionId == userId" class="btn btn-info mt-1" (click)="onClickfile()">change photo</p>
+                    <input type="file" #inpfile name="image" id="image" (change)="onImagechange($event)" hidden>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="profile-form">
+                    
+                    <div class="form-group">
+                        <label class="text-white" for="">UserName</label>
+                        <input type="text" class="form-control" disabled [value]="username" id="username" name="username" placeholder="User Name" required>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label class="text-white" for="">Email</label>
+                        <input type="email" [value]="useremail" disabled class="form-control" id="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    
+                    <button *ngIf="sessionId == userId" type="submit" (click)="onUpdateProfile(inpfile.value)" class="btn btn-primary btn-block">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container">
+        <h4 class="text-center my-4 myblog">My Blogs</h4>
+        <hr>
+        <div class="row">
+           
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let blog of userblogs">
+                <div class="card mb-4">
+                    <img [src]="'data:image/png;base64,'+blog.image_url" class="card-img-top card-image" alt="Blog 1">
+                    <div class="card-body">
+                        <h5 class="card-title">{{blog.blog_title}}</h5>
+                        <p class="card-text" [innerHTML]="blog.blog_content | shortContent:200">  </p>
+                        <a [routerLink]="['/view',blog.blog_id]" class="btn btn-primary">Read More</a>
+                        <button *ngIf="blog.user_id == userId || (sessionId == userId || sessionId == 'MASTLKBLG_1')" class="btn btn-outline-danger" (click)="onDeleteblog(blog.blog_id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+    
+
+        </div>
+    </div>
+    <div *ngIf="userblogs.length == 0" class="container">
+        <h4 style="font-style: italic; color: rgb(168, 167, 167);" class="text-center">You haven't posted any blog</h4>
+    </div>
+    <app-footer></app-footer>
+    <app-confirmation-dialog *ngIf="onShowDialog" (confirmed)="onConfirmation($event)"></app-confirmation-dialog>
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-spin-clockwise" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->
+
+
+    <!-- new design  -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card pb-3">
+                    <h3 class="text-center">Profile</h3>
+                    <hr>
+                    <div class="alert alert-success" *ngIf="showAlert">{{showSuccessMsg}}</div>
+                    <div class="alert alert-danger" *ngIf="showerralert">{{showerrmsg}}</div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="profile-container">
+                                <!-- Circular profile image -->
+                                <img *ngIf="!showImage" [src]="'data:image/png;base64,' + imageurl" alt="Profile Image" style="max-width: 250px; max-height: 250px;" class="profile-image img-responsive">
+                                <img style="margin-bottom: 20px;" *ngIf="showImage" [src]="imageurl" alt="Profile Image" style="max-width: 250px; max-height: 250px;" class="profile-image img-responsive">
+                                <p *ngIf="sessionId == userId" class="btn btn-info mt-1" (click)="onClickfile()">Change Photo</p>
+                                <input type="file" #inpfile name="image" id="image" (change)="onImagechange($event)" hidden>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <form class="profile-form">
+                                <!-- User Name field -->
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" disabled [value]="username" id="username" name="username" placeholder="User Name" required>
+                                </div>
+
+                                <!-- Email field -->
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" [value]="useremail" disabled class="form-control" id="email" name="email" placeholder="Email" required>
+                                </div>
+
+                                <!-- Submit button -->
+                                <button *ngIf="sessionId == userId" type="submit" (click)="onUpdateProfile(inpfile.value)" class="btn btn-primary btn-block">Update Profile <div *ngIf="showLoader" class="spinner-border spinner-border-sm" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                  </div></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h4 class="myblog">My Blogs</h4>
+        <hr>
+        <div class="row">
+            <!-- Blog Cards -->
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let blog of userblogs">
+                <div class="card mb-4">
+                    <img [src]="'data:image/png;base64,' + blog.image_url" class="card-img-top card-image" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{blog.blog_title}}</h5>
+                        <p class="card-text" [innerHTML]="blog.blog_content | shortContent:200"></p>
+                        <a [routerLink]="['/view', blog.blog_id]" class="btn btn-primary">Read More</a>
+                        <button *ngIf="blog.user_id == userId || (sessionId == userId || sessionId == 'MASTLKBLG_1')" class="btn btn-danger mt-2 ml-2" (click)="onDeleteblog(blog.blog_id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 *ngIf="userblogs.length == 0" class="text-center" style="font-style: italic; color: #a8a7a7;">You haven't posted any blogs.</h4>
+    </div>
+
+    <app-footer></app-footer>
+    <app-confirmation-dialog *ngIf="onShowDialog" (confirmed)="onConfirmation($event)"></app-confirmation-dialog>

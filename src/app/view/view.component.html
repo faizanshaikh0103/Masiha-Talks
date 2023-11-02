@@ -1,0 +1,40 @@
+<!-- header starts -->
+<app-header></app-header>
+<!-- header ends -->
+
+<div class="container container-flex">
+  <main role="main">
+    <article class="article-featured">
+      <img
+        [src]="'data:image/png;base64,' + blogs.image_url"
+        alt="image url"
+        class="article-image"
+      />
+
+      <h2 class="article-title">{{ blogs.blog_title }}</h2>
+      <!-- <p class="article-body"> {{blogs.blog_content}} </p> -->
+      <div [innerHTML]="blogs.formattedContent" class="artical-body artical-view"></div>
+      <div>
+        <h5>
+            {{blogs.author_name}}&nbsp;<fa-icon [icon]="faPen"></fa-icon></h5>
+      </div>
+      <p class="article-info">
+        {{ blogs.post_date | date : "mediumDate" }}</p>
+      <share-buttons
+        theme="circles-dark"
+        [include]="['copy', 'facebook', 'whatsapp']"
+        [showIcon]="true"
+        [showText]="false"
+        [url]="getCurrenturl()"
+        description="Angular Share Buttons"
+        twitterAccount=""
+        class="pt-2"
+      >
+      </share-buttons>
+    </article>
+  </main>
+  <!-- Comment section start -->
+  <app-comments></app-comments>
+  <!-- comment section end  -->
+</div>
+<app-footer></app-footer>

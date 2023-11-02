@@ -1,0 +1,66 @@
+
+<!-- Include a well-structured header -->
+<app-header></app-header>
+
+<div class="container" *ngIf="showPost">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card p-4 mb-3">
+        <div class="card-body">
+          <h2>Post a Blog</h2>
+          <hr>
+          <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+          <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+          <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="blogTitle">Title</label>
+              <input type="text" ngModel required class="form-control" name="blog_title" id="blogTitle" placeholder="Enter a title">
+            </div>
+
+            <div class="form-group">
+              <label for="blogContent">Content</label>
+              <quill-editor
+              [(ngModel)]="blog_content"
+              [modules]="quillModules"
+              name="content"
+            ></quill-editor>
+            
+            </div>
+
+            <div class="form-group">
+              <label for="imageUpload">Upload an Image</label>
+              <input type="file" name="image_url" (change)="onSelectImage($event)" ngModel required class="form-control-file" id="imageUpload">
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+            Post <fa-icon [icon]="faPaperPlane"></fa-icon> <div *ngIf="showLoader" class="spinner-border spinner-border-sm" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="showUnauthorized">
+    <div class="col-md-6">
+      <h3 class="alert alert-danger" style="color: red; text-align: center;"> <fa-icon [icon]="faExclamationTriangle"></fa-icon> Unauthorized !!</h3>
+      <p>
+        You are not <strong>authorized</strong> for posting blogs. <br>
+        To get access of posting blog click on <button class="btn btn-outline-info" *ngIf="!getAccess" (click)="onGetaccessclk()">get Access</button>
+      </p>
+      <div *ngIf="showExist" class="container mt-2 mb-5">
+        <div class="alert alert-warning">Your Previous request is in pending</div>
+      </div>
+      <div *ngIf="getAccess" class="container mb-5">
+        <form #f="ngForm" (ngSubmit)="onSendRequest(f.value)">
+          <textarea class="form-control mt-3" minlength="25" #message="ngModel" ngModel required name="message" id="message" cols="30" rows="5" placeholder="Describe your self"></textarea>
+          <button [disabled]="f.invalid" [ngClass]="requestbtn ? btn2 : btn1"><span *ngIf="!requestbtn">Send Request</span> <span *ngIf="requestbtn">Request sent</span></button>
+        </form>
+      </div>
+    </div>
+   
+</div>
+<app-footer></app-footer>

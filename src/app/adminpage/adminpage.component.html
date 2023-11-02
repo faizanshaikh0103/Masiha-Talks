@@ -1,0 +1,288 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+    <a class="navbar-brand text-white" ><h2>Masiha Talks Admin</h2></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" routerLink="">Home <span class="sr-only">(current)</span></a>
+       
+       
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <button class="btn btn-warning" (click)="onAdminlogout()">Log out</button>
+    </div>
+  </nav>
+
+<div class="container-fluid mt-4">
+    <h1 class="text-center">User List</h1>
+    
+   
+    
+
+    <div class="col-md-6">
+        <div class="alert alert-warning" *ngIf="showdeletealert">{{showdelmsg}}</div>
+        
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; index as i">
+                    
+                    <td>{{i+1}}</td>
+                    <a [routerLink]="['/uprofile',user.user_id]">
+                    <td>{{user.user_name}}</td>
+                    </a>
+                    <td> {{user.email}} </td>
+                    
+                    <td>
+                        <a [routerLink]="['/uprofile',user.user_id]" style="text-decoration: none;" class="btn btn-outline-info mr-1 text-info">View</a>
+                        <button (click)="onDeleteuser(user.user_id)" class="btn btn-outline-danger">Delete</button>
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+      <h4>Approval request</h4>
+      <small>Blog post approval pending requests</small>
+      <table>
+        <thead>
+          <tr>
+            <th>Sr. No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of pendingrequest; index as i">
+            <td> {{i+1}} </td>
+            <td> {{item.user_name}} </td>
+            <td> {{item.email}} </td>
+            <td> <a [routerLink]="['/requestview',item.user_id]" class="btn btn-info">view</a> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+<div class="container">
+  <h4>Active user</h4>
+  <table>
+    <thead>
+     <tr>
+      <th>Sr. No.</th>
+      <th>User Name</th>
+      <th>Email</th>
+      <th></th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of activeusers; index as i">
+        <td>{{i+1}}</td>
+        <td>{{item.user_name}}</td>
+        <td>{{item.email}}</td>
+        <td> <a [routerLink]="['viewrequest',item.user_id]" class="btn btn-info">View</a> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>
+<app-confirmation-dialog *ngIf="onShowDialog" (confirmed)="onConfirmation($event)"></app-confirmation-dialog> -->
+
+
+<!-- new design -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+  <a class="navbar-brand text-white" href="#"><h2>Masiha Talks Admin</h2></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <button class="btn btn-warning" (click)="onAdminlogout()">Log out</button>
+          </li>
+      </ul>
+  </div>
+</nav>
+
+<div class="container-fluid mt-4">
+  <h1 class="text-center">User List</h1>
+  <div class="row">
+      <div class="col-md-6">
+          <div class="alert alert-warning" *ngIf="showdeletealert">{{showdelmsg}}</div>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Sr. No.</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of users; index as i">
+                      <td>{{i+1}}</td>
+                      <td><a [routerLink]="['/uprofile',user.user_id]">{{user.user_name}}</a></td>
+                      <td>{{user.email}}</td>
+                      <td>
+                          <a [routerLink]="['/uprofile',user.user_id]" class="btn btn-outline-info text-info">View</a>
+                          <button (click)="onDeleteuser(user.user_id)" class="btn btn-outline-danger">Delete</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col-md-6">
+          <h4>Approval Request</h4>
+          <small>Blog post approval pending requests</small>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Sr. No</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of pendingrequest; index as i">
+                      <td>{{i+1}}</td>
+                      <td>{{item.user_name}}</td>
+                      <td>{{item.email}}</td>
+                      <td><a [routerLink]="['/requestview',item.user_id]" class="btn btn-info">View</a></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h4>Active Users</h4>
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>Sr. No.</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of activeusers; index as i">
+              <td>{{i+1}}</td>
+              <td>{{item.user_name}}</td>
+              <td>{{item.email}}</td>
+              <td><a [routerLink]="['viewrequest',item.user_id]" class="btn btn-info">View</a></td>
+          </tr>
+      </tbody>
+  </table>
+</div> -->
+
+
+<!-- new second  -->
+
+<nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+  <a class="navbar-brand text-white" href="#"><h2>Masiha Talks Admin</h2></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <button class="btn btn-warning" (click)="onAdminlogout()">Log out</button>
+          </li>
+      </ul>
+  </div>
+</nav>
+
+<div class="container dashboard-container">
+  <div class="table-container">
+      <h2 class="table-title">User Management</h2>
+      <table class="table table-bordered table-striped">
+          <thead>
+              <tr>
+                  <th>User ID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of users; index as i">
+                  <td>{{user.user_id}}</td>
+                  <td><a [routerLink]="['/uprofile', user.user_id]">{{user.user_name}}</a></td>
+                  <td>{{user.email}}</td>
+                  <td class="text-center">
+                      <a [routerLink]="['/uprofile', user.user_id]" class="btn btn-info btn-sm">View</a>
+                      <button (click)="onDeleteUser(user.user_id)" class="btn btn-danger btn-sm ml-2">Delete</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <div class="table-container">
+      <h2 class="table-title">Approval Requests</h2>
+      <table class="table table-bordered table-striped">
+          <thead>
+              <tr>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of pendingrequest; index as i">
+                  <td>{{item.user_id}}</td>
+                  <td>{{item.user_name}}</td>
+                  <td>{{item.email}}</td>
+                  <td class="text-center"><a [routerLink]="['/requestview', item.user_id]" class="btn btn-info btn-sm">View</a></td>
+              </tr>
+              <tr *ngIf="pendingrequest.length == 0">
+                  <td class="text-center" colspan="10">No Pending request</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <div class="table-container">
+      <h2 class="table-title">Active Users</h2>
+      <table class="table table-bordered table-striped">
+          <thead>
+              <tr>
+                  <th>User ID</th>
+                  <th>User Name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of activeusers; index as i">
+                  <td>{{item.user_id}}</td>
+                  <td>{{item.user_name}}</td>
+                  <td>{{item.email}}</td>
+                  <td class="text-center"><a [routerLink]="['/requestview', item.user_id]" class="btn btn-info btn-sm">View</a></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+<app-footer></app-footer>
+<app-confirmation-dialog *ngIf="onShowDialog" (confirmed)="onConfirmation($event)"></app-confirmation-dialog>

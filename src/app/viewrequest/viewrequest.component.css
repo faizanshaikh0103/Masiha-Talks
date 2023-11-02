@@ -1,0 +1,59 @@
+.myclass{
+    background-color: rgb(154, 154, 69);
+}
+
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.card h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-action {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+/* Custom styles for an attractive design */
+body {
+    background-color: #f0f0f0;
+}
+
+.card {
+    background-color: #fff;
+    color: #333;
+}
+
+.btn-action .btn-success {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.btn-action .btn-success:hover {
+    background-color: #45a049;
+}
+
+.btn-action .btn-danger {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.btn-action .btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.btn-action .btn-warning {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+.btn-action .btn-warning:hover {
+    background-color: #e68a00;
+}

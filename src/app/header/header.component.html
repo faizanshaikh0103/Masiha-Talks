@@ -1,0 +1,64 @@
+
+ <header>
+    <div class="container container-flex">
+      <div class="site-title">
+        <h1 class="logo">Masiha Talks</h1>
+        <p class="subtitle">Talks about Truth & Faith.</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a routerLink="" class="current-page"><span> <fa-icon [icon]="faHome"></fa-icon> Home</span></a></li>
+          <li><a routerLink="/create"> <fa-icon [icon]="faEdit"></fa-icon> Post a Blog</a></li>
+          <li *ngIf="user_id != null"><a [routerLink]="['/uprofile',user_id]"> <fa-icon [icon]="faUser"></fa-icon> Profile</a></li>
+          <li *ngIf="user_id == null"><a routerLink="/login"> <fa-icon [icon]="faSignInAlt"></fa-icon> Sign In </a></li>
+          <li *ngIf="user_id != null"><a (click)="onLogout()"> <fa-icon [icon]="faSignOutAlt"></fa-icon> Log out </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- <header class="site-header bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <h1 class="site-title">Masiha Talks</h1>
+          <p class="subtitle">Talks about Truth & Faith.</p>
+        </div>
+        <div class="col-12 col-lg-6">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a routerLink="/create" class="nav-link">Post a Blog</a>
+                </li>
+                <li class="nav-item" *ngIf="user_id">
+                  <a [routerLink]="['/uprofile', user_id]" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="!user_id">
+                  <a routerLink="/login" class="nav-link">Sign In</a>
+                </li>
+                <li class="nav-item" *ngIf="user_id">
+                  <a (click)="onLogout()" class="nav-link">Log Out</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header> -->
+  
+  
+  
+  

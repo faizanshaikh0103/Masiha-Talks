@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="form-container">
+        <div class="alert alert-danger" *ngIf="showErrorAlert">{{showMsg}}</div>
+        <h4 class="text-center">Admin Login</h4>
+        <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+            <div class="form-group">
+                <label for="username" class="form-control-label">Username</label>
+                <input type="text" required ngModel name="username" id="username" placeholder="Enter username" class="form-control">
+                <div class="alert alert-danger" *ngIf="f.submitted && f.controls.username.invalid">
+                    *Username is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-control-label">Password</label>
+                <input type="password" minlength="6" required ngModel name="password" id="password" placeholder="Password" class="form-control">
+                <div class="alert alert-danger" *ngIf="f.submitted && f.controls.password.invalid">
+                    *Password is required and must be at least 6 characters long.
+                </div>
+            </div>
+            <button [disabled]="f.invalid" type="submit" name="login" value="Login" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</div>
+
+

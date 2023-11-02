@@ -1,0 +1,91 @@
+/* .imagecircle{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.fieldset{
+    width: 400px;
+    border-bottom: 1px;
+} */
+
+ /* Custom CSS for styling */
+ /* .profile-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.profile-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid #000;
+    border-radius: 0%;
+}
+
+.form-control:focus {
+    border-color: #e74c3c;
+} */
+
+/* .blogs-area{ */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
+/* } */
+/* .myblog{ */
+    /* background-color: burlywood; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large; */
+    /* padding: 5px; */
+/* } */
+/* .card-image{
+    width: 340px;
+    height: 250px;
+} */
+
+/* new css */
+
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+}
+
+.profile-image {
+    max-width: 50%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.btn-action {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.myblog {
+    font-size: 24px;
+    text-align: center;
+}
+
+.card-image {
+    max-height: 200px;
+}

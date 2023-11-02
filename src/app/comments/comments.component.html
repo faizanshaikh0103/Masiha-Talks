@@ -1,0 +1,154 @@
+<!-- <section>
+    <div class="container mb-5">
+      <div class="row">
+        <div class="col-sm-5 col-md-6 col-12 pb-4">
+          <h1 class="border-bottum">Comments</h1>
+          <div class="container align-center" *ngIf="showNocomment">
+            <h6 style="color: grey;" class="text-center">No Comments </h6>
+          </div> -->
+          <!-- <div
+            class="comment mt-4 justify-content float-left border-b"
+            *ngFor="let comment of comments"
+          >
+        
+          <div class="row">
+            <img
+              [src]="'data:image/png;base64,' + comment.user_image"
+              alt=""
+              class="rounded-circle"
+              width="30"
+              height="30"
+              style="border: 1px solid rgb(193, 193, 193);"
+            />
+            <h5 style="margin-top:2px; margin-left: 8px;">{{comment.user_name}}</h5>
+          </div>
+            <span style="margin-top:-4px;"
+              >- {{comment.comment_date | date:'mediumDate'}}
+              <span class="float-right"
+                ><i class="24 x 24
+                mdi:heart" id="heart"></i
+              ></span>
+            </span>
+            <br />
+            <p>{{ comment.comment_content }}</p>
+          </div> -->
+
+          <!-- <div class="comment mt-4 justify-content float-left border-b" *ngFor="let comment of comments"> -->
+            <!-- Individual comment -->
+            <!-- <div class="row"> -->
+              <!-- User image and name -->
+              <!-- <img [src]="'data:image/png;base64,' + comment.user_image" alt="" class="rounded-circle" width="30" height="30" style="border: 1px solid rgb(193, 193, 193);" />
+              <h5 style="margin-top: 2px; margin-left: 8px;">{{comment.user_name}}</h5>
+            </div>
+            <span style="margin-top: -4px;">
+              - {{comment.comment_date | date:'mediumDate'}}
+              <span class="float-right">
+                <i class="24 x 24 mdi:heart" id="heart"></i>
+             </span>
+            </span>
+            <br /> -->
+            <!-- Comment content -->
+            <!-- <p style="white-space: pre-line;">{{ comment.comment_content }}</p>
+          </div>
+          
+        </div>
+      
+        <div
+          class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4"
+        >
+          <form #f="ngForm" id="algin-form"  (ngSubmit)="onCommentpost(f.value)">
+            <div class="form-group">
+              <h4 style="color: white">Leave a comment</h4>
+              <label for="message">Message</label>
+              <textarea
+                name="comment_content"
+                id=""
+                msg
+                cols="30"
+                rows="5"
+                class="form-control"
+                #comment="ngModel" 
+                ngModel
+                required
+              ></textarea>
+            </div>
+            
+            <div class="form-group">
+              <button [disabled]="f.invalid" type="submit" id="post" class="btn">Post Comment</button>
+              <div *ngIf="showError" class="alert alert-danger">
+                {{errorMsg}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  
+<!-- modified code  -->
+
+<section>
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-sm-5 col-md-6 col-12 pb-4">
+        <h1 class="border-bottom">Comments</h1>
+        <div class="container align-center" *ngIf="showNocomment">
+          <h6 style="color: grey;" class="text-center">No Comments</h6>
+        </div>
+
+        <div class="comment mt-4 justify-content float-left border-b" *ngFor="let comment of comments" style="display: block; clear: both;">
+          <!-- Individual comment -->
+          <div class="row">
+            <!-- User image and name -->
+            <img *ngIf="comment.user_image != null" [src]="'data:image/png;base64,' + comment.user_image" alt="" class="rounded-circle" width="30" height="30" style="border: 1px solid rgb(193, 193, 193);" />
+            <img *ngIf="comment.user_image == null" src="assets/defaultimage.png" alt="" class="rounded-circle" width="30" height="30" style="border: 1px solid rgb(193, 193, 193);" />
+            <h5 style="margin-top: 2px; margin-left: 8px; ">{{comment.user_name}}
+             <span style="margin-top: -4px; font-size:10px;">
+            - {{comment.comment_date | date:'mediumDate'}}
+          </span>
+        </h5>
+            <button *ngIf="comment.user_id == user_id" (click)="deleteComment(comment.comment_id)" class="btn btn-lg" style="font-size: 12px;"><fa-icon [icon]="faTrash" style="color: red;"></fa-icon>
+            </button>
+            
+          </div>
+         
+          <!-- <br /> -->
+          
+          <p>{{ comment.comment_content }}</p>
+
+          
+          
+        </div>
+        
+
+      </div>
+
+      <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+        <form #f="ngForm" id="align-form" (ngSubmit)="onCommentpost(f.value)">
+          <div class="form-group">
+            <h4 style="color: white">Leave a comment</h4>
+            <label for="comment_content">Message</label>
+            <textarea
+              name="comment_content"
+              cols="30"
+              rows="5"
+              class="form-control"
+              #comment="ngModel"
+              ngModel
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <button [disabled]="f.invalid" type="submit" id="post" class="btn">Post Comment</button>
+            <div *ngIf="showError" class="alert alert-danger">
+              {{ errorMsg }}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+<app-confirmation-dialog *ngIf="onShowDialog" (confirmed)="onConfirmation($event)"></app-confirmation-dialog>

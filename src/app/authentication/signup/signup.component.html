@@ -1,0 +1,118 @@
+<!-- header start  -->
+<app-header></app-header>
+<!-- header end -->
+
+<div class="main">
+  <!-- Sign up form -->
+  <section class="signup">
+    <app-success *ngIf="showSuccess"></app-success>
+    <div class="container">
+      <div class="signup-content">
+        <div class="signup-form">
+          <div class="alert alert-danger" *ngIf="showAlerterr">{{"*"+showMsg}}</div>
+
+          <h2 class="form-title">Sign up</h2>
+          <form
+            #sform="ngForm"
+            (ngSubmit)="onSignup(sform.value)"
+            class="register-form"
+            id="register-form"
+          >
+            <div class="form-group">
+             
+              <label for="name"
+                ><i class="zmdi zmdi-account material-icons-name"></i
+              ></label>
+              <input
+                type="text"
+                required
+                #name="ngModel"
+                ngModel
+                name="name"
+                id="name"
+                placeholder="Your Name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="zmdi zmdi-email"></i></label>
+              <input
+                type="email"
+                required
+                #email="ngModel"
+                ngModel
+                name="email"
+                id="email"
+                placeholder="Your Email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password"><i class="zmdi zmdi-lock"></i></label>
+              <input
+                type="password"
+                required
+                #pass="ngModel"
+                ngModel
+                name="password"
+                id="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="cpassword"
+                ><i class="zmdi zmdi-lock-outline"></i
+              ></label>
+              <input
+                type="password"
+                required
+                #cpass="ngModel"
+                ngModel
+                name="cpassword"
+                id="cpassword"
+                placeholder="Confirm your password"
+              />
+              <div *ngIf="cpassword" class="alert alert-danger">*Confirm password is wrong</div>
+            </div>
+            <div class="form-group">
+              <input
+                type="checkbox"
+                name="agree-term"
+                id="agree-term"
+                class="agree-term"
+              />
+              <label for="agree-term" class="label-agree-term"
+                ><span><span></span></span>I agree all statements in
+                <a href="#" class="term-service">Terms of service</a></label
+              >
+            </div>
+            <div class="form-group form-button">
+              <button
+                type="submit"
+                name="signup"
+                id="signup"
+                [disabled]="sform.invalid"
+                class="form-submit"
+              >
+                Register 
+                <div *ngIf="showLoader" class="spinner-border spinner-border-sm" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="signup-image">
+          <figure>
+            <img src="assets/signup-image.jpg" alt="sing up image" />
+          </figure>
+          <a routerLink="/login" class="signup-image-link"
+            >I am already member</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sing in  Form -->
+</div>
+
+<app-footer></app-footer>

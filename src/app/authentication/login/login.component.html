@@ -1,0 +1,52 @@
+<!-- header start -->
+<app-header></app-header>
+<!-- header end -->
+
+<section class="sign-in">
+  <div class="container">
+      <div class="signin-content">
+          <div class="signin-image">
+              <figure><img src="assets/signin-image.jpg" alt="sing up image"></figure>
+              <a routerLink="/signup" class="signup-image-link">Create an account</a>
+          </div>
+          
+          <div class="signin-form">
+              <div *ngIf="showAlerterr" class="alert alert-danger">{{"*"+showMsg}}</div>
+              <h2 class="form-title">Sign in</h2>
+              <form #lform="ngForm" (ngSubmit)="onLogin(lform.value)" class="register-form" id="login-form">
+               
+                  <div class="form-group">
+                      <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                      <input type="email" #email="ngModel" ngModel name="email" id="email" placeholder="Your Email" required />
+                  </div>
+                  <div class="form-group">
+                      <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                      <input type="password" #pass="ngModel" ngModel name="password" id="password" placeholder="Password" required/>
+                  </div>
+                  <div class="form-group">
+                      <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                      <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                  </div>
+                  <div class="form-group form-button">
+                      <button type="submit" name="signin" id="signin" [disabled]="!lform.valid" class="form-submit" > Log in  
+                        <div *ngIf="showLoader" class="spinner-border spinner-border-sm" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                     </button>
+                     
+                  </div>
+              </form>
+              <div class="social-login">
+                  <span class="social-label">Or login with</span>
+                  <ul class="socials">
+                      <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                      <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                      <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<app-footer></app-footer>
+<!-- </div> -->
